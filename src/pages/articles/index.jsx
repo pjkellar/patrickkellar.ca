@@ -38,10 +38,14 @@ export default function ArticlesIndex({ articles }) {
   return (
     <>
       <Head>
-        <title>Articles - Spencer Sharp</title>
+        <title>Articles | Patrick Kellar</title>
         <meta
           name="description"
-          content="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+          content="A collection of thoughts, discoveries, and generally things I find intersting -- come along for the journey with me!"
+        />
+        <meta
+          name="keywords"
+          content="fullstack developer, blog, remote work, canada, technology, php, software development, software engineering"
         />
       </Head>
       <SimpleLayout

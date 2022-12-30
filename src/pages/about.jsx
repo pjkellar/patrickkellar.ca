@@ -41,10 +41,14 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About - Spencer Sharp</title>
+        <title>About | Patrick Kellar</title>
         <meta
           name="description"
           content="I’m Patrick Kellar. I am a fullstack developer working remotely from Ontario, Canada"
+        />
+        <meta
+          name="keywords"
+          content="fullstack developer, blog, remote work, canada, technology, php, software development, software engineering"
         />
       </Head>
       <Container className="mt-16 sm:mt-32">

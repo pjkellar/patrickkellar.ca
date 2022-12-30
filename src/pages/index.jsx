@@ -207,11 +207,15 @@ export default function Home({ articles }) {
     <>
       <Head>
         <title>
-          Patrick J Kellar - Remote Fullstack Developer
+          Patrick Kellar | Remote Fullstack Developer
         </title>
         <meta
           name="description"
           content="Remote Full Stack Developer with a strong foundation in relational databases, system administration, and Dev Ops"
+        />
+        <meta
+          name="keywords"
+          content="fullstack developer, blog, remote work, canada, technology, php, software development, software engineering"
         />
       </Head>
       <Container className="mt-9">
