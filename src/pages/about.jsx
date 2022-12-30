@@ -61,7 +61,7 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h3 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              Hi, I&apos;m Patrick Kellar.
+              Hi, I&apos;m Patrick Kellar 👋
             </h3>
             <h1 className="mt-6 text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-2xl">
               About Me
@@ -116,7 +116,6 @@ export default function About() {
                 like to develop. I’ve also committed myself to start{' '}
                 <Link
                   href="/articles"
-                  // className="border-b-2 border-teal-500 font-semibold"
                   className="transition hover:text-teal-500 dark:hover:text-teal-400 border-b border-dotted"
                 >
                   {' '}
@@ -127,16 +126,16 @@ export default function About() {
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink href="#" icon={TwitterIcon}>
+              <SocialLink href={`${process.env.NEXT_PUBLIC_TWITTER_URL}`} icon={TwitterIcon}>
                 Follow on Twitter
               </SocialLink>
-              <SocialLink href="#" icon={InstagramIcon} className="mt-4">
+              <SocialLink href={`${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`} icon={InstagramIcon} className="mt-4">
                 Follow on Instagram
               </SocialLink>
-              <SocialLink href="#" icon={GitHubIcon} className="mt-4">
+              <SocialLink href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`} icon={GitHubIcon} className="mt-4">
                 Follow on GitHub
               </SocialLink>
-              <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
+              <SocialLink href={`${process.env.NEXT_PUBLIC_LINKEDIN_URL}`} icon={LinkedInIcon} className="mt-4">
                 Follow on LinkedIn
               </SocialLink>
               <SocialLink
