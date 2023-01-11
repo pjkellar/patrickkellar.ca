@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import * as Fathom from 'fathom-client';
 
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
@@ -17,7 +18,28 @@ function usePrevious(value) {
 }
 
 export default function App({ Component, pageProps, router }) {
+
   let previousPathname = usePrevious(router.pathname)
+
+  useEffect(() => {
+
+    Fathom.load('RJETXZAD', {
+      url:['https://bear-teddy.patrickkellar.dev'],
+      includedDomains: ['patrickkellar.dev','www.patrickkellar.dev'],
+    });
+
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
+
+    // Record a pageview when route changes
+    router.events.on('routeChangeComplete', onRouteChangeComplete);
+
+    // Unassign event listener
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete);
+    };
+  }, []);
 
   return (
     <>
