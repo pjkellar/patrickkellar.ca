@@ -24,7 +24,7 @@ export default function App({ Component, pageProps, router }) {
   useEffect(() => {
 
     Fathom.load('RJETXZAD', {
-      url:['https://bear-teddy.patrickkellar.dev'],
+      url:['https://bear-teddy.patrickkellar.dev/script.js'],
       includedDomains: ['patrickkellar.dev','www.patrickkellar.dev'],
     });
 
