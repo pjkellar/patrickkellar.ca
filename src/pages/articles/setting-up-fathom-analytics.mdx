@@ -1,0 +1,66 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Patrick Kellar',
+  date: '2023-01-12',
+  title: 'Setting up Fathom Analytics',
+  description:
+    'After seeing a few tweets and blog posts about Fathom (a privacy-compliant web analytics platform like Google Analytics) I figured I would take a look. I am in the market for a analytics solution for my website, and I am a sucker for a beautifully designed and modern UI.',
+  keywords: [
+    'fathom, fathom analytics, growth, google analytics alternative, easy',
+  ],
+  tags: [
+    'web development',
+    'fathom analytics',
+  ],
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+After seeing a few tweets and blog posts about Fathom (a privacy-compliant web analytics platform like Google Analytics) I figured I would take a look. I am in the market for a analytics solution for my website, and I am a sucker for a beautifully designed and modern UI.
+
+## What is Fathom?
+
+Say you want to know more about your website visitors while respecting their privacy or or annoying them with pesky cookie banners? Fathom Analytics may just be for you! Not only will you get all the information you need to boost leads and revenue, but you'll be able to do it all without invading anyone's privacy or breaking any laws. Plus, Fathom is loved by tons of big-name businesses like Github, Buffer, Laravel, IBM and more, so you know it's legit.
+
+## Getting started with Fathom
+
+I’ll tell you right now, setting this up could not have been easier. I even set mine up with a custom domain name (which helps prevent being blocked by ad blockers and browser tools).
+
+Their website is a dream to use right from the beginning.
+
+1. [Sign up for an account](https://usefathom.com/ref/LPMYTO) (It’s free to sign up and this link will give you a $10 credit on your first invoice if you chose to continue after the 30 day trial period)
+2. Create your first site be heading to [app.usefathom.com/sites](https://app.usefathom.com/sites)
+3. Head to “Script Settings” and have a look at just how easy this is to get working
+    1. Grab the embed code and add it to the `<head>` tag for your layout (or if not using layouts, any page for which you want to capture metrics for)
+    2. Make sure your domain name is listed in the “Allowed Domains” list so that Fathom knows to track it
+4. If you want to exclude domains from being tracked you can do so by adding the attribute `data-excluded-domains` to your script tag like so:
+
+```html
+<script src="https://cdn.usefathom.com/script.js"
+				data-site="ABCDEFG"
+				data-excluded-domains="example1.com,localhost"
+				defer></script>
+```
+
+This is a great way to exclude your [localhost](http://localhost) or any staging domains you might have from being tracked and throwing off your numbers.
+
+For more advanced configurations settings check out their [extensive documentation](https://usefathom.com/docs)
+
+5. Head over to [app.usefathom.com](http://app.usefathom.com) and wait for the data to start rolling in!
+
+## Extras
+
+If you are using a CMS or framework, checkout the [Integrations page](https://usefathom.com/docs/integrations) that shows how to set Fathom up for many popular systems!
+
+I also setup uptime monitoring and monthly email reports with a few clicks, so handy!
+
+ 
+
+Now… if only my website would get some more traffic so I could test their dashboard a bit more 😏
+
+## How to get in touch?
+
+DM me [@pjkellar](https://twitter.com/pjkellar) on Twitter or [email me](mailto:pjkellar@gmail.com)
+
+Patrick ✌️
