@@ -1,0 +1,107 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Patrick Kellar',
+  date: '2023-02-12',
+  title: 'Single Responsibility Principle',
+  description:
+    'Do you want to write cleaner, more maintainable code? You might consider taking a look at the Single Responsibility Principle, it’s what is represented by the “S” in the 5 principles that make up SOLID, a set of guidelines first established by Robert C. Martin (aka Uncle Bob) back in the early 2000\’s.',
+  keywords: [
+    'SOLID Principles, Laravel, OOP, design best practices, software design principles',
+  ],
+  tags: [
+    'web development',
+    'laravel',
+    'object oriented programming',
+  ],
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## What is the Single Responsibility Principle?
+
+The [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) (SRP) is a fundamental principle of software design that emphasizes the importance of creating modules or classes that have a single responsibility. It is an essential practice for writing clean, maintainable, and extensible code. Whether your are working alone or with a team, you should really always strive to be following best practices. It makes it life much easier when you come back to your code later, or when someone else comes along and needs to make changes.
+
+At its core, the SRP states that a module, class, or function should have “only one reason to change”, or to put it another way, a module should have only one responsibility or job. This means that if your classes, modules, or functions have more than one purpose they should be broken down into smaller, individual components.
+
+### Why should you use it?
+
+Have you ever gone back to something you wrote a year (or more) ago and when you started to look you had no idea what you were thinking? There doesn't seem to be any flow, everything is all over the place, and you are now trying to make a change to fix a bug or update a feature? When you follow SRP, it makes this entire process much easier. When components are smaller and more focused, it allows you to get in and make a change without feeling like you are going to inject any issues or bugs. It also makes it easier to test your application (and you definitely should be testing!).
+
+### How to start using the SRP
+
+The easiest way that I found for starting to implement SRP in my code was to pick something I had written a while ago and examine how it fits together and start to think about how you could break it down into smaller chucks. It doesn’t have to be code that you want to update or need to fix — you can (and I think *should*) be going back to your older projects and looking at ways to improve them. Even if you don’t need to, its a good way to see how far you’ve grown as a developer. If your old code scares you, or you shake your head and say “what was I thinking”, it means you are growing!
+
+Here are some tips on how to get started:
+
+1. Determine what each module or class in the application needs to do. What is its purpose?
+2. Does it have more than one responsibility? If so, write them down as individual items.
+3. Now, start to refactor them in a way that allows each module or class to have a single, core responsibility.
+4. Now, remember when I said you should be testing your application? This is where that comes in. Test the changes you made and ensure the functionality remains intact. You might need to adjust your tests to fit your new design. Having a solid (no pun intended) test suite allows for more confidence when you are refactoring. If you didn’t have a test suite, how could you really confirm what you are changing will still work in all cases? Sure, it might run… but what about when you hit an edge case that you didn’t consider?
+
+### Example
+
+Here is an example of how you might refactor a snippet from a controller in Laravel to follow the SRP:
+
+```php
+class UserController extends Controller
+{
+    public function store(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+        return response()->json(['status' => 'success']);
+    }
+}
+```
+
+In this example, we have the `UserController` both handling the response and creating a new user. Lets see how we refactor this for SRP and clean it up a bit:
+
+```php
+class UserController extends Controller
+{
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+    public function store(Request $request)
+    {
+        $this->userService->createUser($request->all());
+        return response()->json(['status' => 'success']);
+    }
+}
+```
+
+```php
+class UserService
+{
+    public function createUser($userData)
+    {
+        $user = new User();
+        $user->name = $userData['name'];
+        $user->email = $userData['email'];
+        $user->password = bcrypt($userData['password']);
+        $user->save();
+    }
+}
+```
+
+In the refactored example, we extracted the logic for creating a user to it’s own class, then we injected the `UserService` into the controller’s `__construct` method. Now, the controller can handle the HTTP request and offload the user creation to the `UserService` class. This way, its more modular and easier to test. If down the road you need to change how a user is created or persisted, you only need to make that change in one place.
+
+This is obviously a simple example, but It should give you enough information about the concept and how you might use it in your application. I would wager that most codebases have at least a few places where a refactor like this would be possible.
+
+### Wrapping up
+
+At the end of the day, the Single Responsibility Principle is a key principle of software design that can help to create code that is easier to understand, maintain, and modify. It allows you to comfortably go back to you code later and make adjustments without that dreaded feeling that you are going to introduce more problems than you are trying to solve. It’s also great if you are developing open source projects or working on a team. If your code is easy to understand, you are more likely to find that someone will want to add features, help fix bugs, etc. If your code is a mangled mess or a monolithic class that does it all, it’s not as easy for someone to look at and think “hey, I think I could make a change here without breaking something.”
+
+## How to get in touch?
+
+DM me [@pjkellar](https://twitter.com/pjkellar) on Twitter or [email me](mailto:pjkellar@gmail.com)
+
+Patrick ✌️
