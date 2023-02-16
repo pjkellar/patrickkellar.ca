@@ -1,0 +1,57 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/future/image'
+import imInDanger from './imindanger.jpg'
+import screenshot from './screenshot.png'
+
+export const meta = {
+  author: 'Patrick Kellar',
+  date: '2023-02-16',
+  title: 'Azure App Service - ENV variables are not always as they seem',
+  description:
+    'Well that was an interesting rabbit hole to have found myself in…',
+  keywords: [
+    'Azure App Service, Laravel, Environment Variables, rabbit hole, software design',
+  ],
+  tags: [
+    'web development',
+    'laravel',
+    'object oriented programming',
+    'azure app service',
+  ],
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Background
+
+I was having some issues with one of my Laravel Applications that’s running on a [Azure App Service](https://azure.microsoft.com/en-us/products/app-service/#overview). My CI/CD pipeline would deploy without issue and everything was working well! Then, if I were to do a swap between the production and development slots, I would need to run `php artisan config:cache` to ensure the configuration was setup correctly for the current slot, since it would have been cached from the previous slot's environment settings. The command would run but my app would immediately start **throwing errors when trying to establish a connection to the DB**. 
+
+<Image src={imInDanger} alt="Simpsons Ralph Im in Danger Meme" />
+
+With the App Service, I don’t maintain a `.ENV` file as part of the deployment process, these environment settings are added in the Azure portal under the Application Settings tab of your App Service. During the deployment, my build script in Azure Dev Ops grabs the application settings and uses them to build up my configuration files (anywhere I used the `ENV()` helper) and all that works as intended. However, when the application settings get converted into local ENV variables for the exposed Linux OS, I was seeing inconsistencies in some variables — specifically the ones where I had `$` characters. Since I use password generators and try and make my passwords use all types of characters, the password often gets generated including the `$` character — and that’s the root cause of my issue…
+
+## Testing
+
+Now, before you say *"Patrick, why didn’t you just esacape the `$` with a backslash?"*, I tried that and it didn’t work. So, here is what I did as a test. From the Azure portal I added a new application setting that looks like the following:
+
+<Image src={screenshot} alt="Screenshot of the Azure Applications Settings tab" />
+
+Then, after restarting my App Service I checked the resulting variable that was created for the exposed OS and sure enough…
+
+```bash
+echo $TEST //this
+```
+
+So, after a quick update of the password and restarting the App Service, all is good again. 👍 This is why I like using the slots that App Services offers. If you run into an issue, you can quickly divert some or all of your traffic back to the other slot, so the application remains intact from the end user’s perspective.
+
+## A note to future Patrick (TLDR)
+
+Save yourself the headache and confusion and just don’t use `$` in any strings that you need to add into your ENV file. Or, if you must and there is no other way around it, you could always use the old `base64_encode()` and `base64_decode()` trick to ensure that your string will not contain characters that may not transfer well.
+
+**Hopefully if someone stumbles upon this from Google it might save you the headache that I endured!**
+
+## How to get in touch?
+
+DM me [@pjkellar](https://twitter.com/pjkellar) on Twitter or [email me](mailto:pjkellar@gmail.com)
+
+Patrick ✌️
