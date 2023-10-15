@@ -72,16 +72,16 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                At work, I am a Full Stack Developer for a K-12 School Board in
-                Ontario, Canada — working remotely. I often find myself wearing
-                many hats. Typically you’ll find me juggling my Full Stack role
-                with DBA, Sysadmin, DevOps, among others...
+                I&apos;m a Senior Software Engineer with over 13 years of experience, currently working remotely from Ontario, Canada.
+                I work on a small team of brilliant developers for a company called QuoteVelocity. We provide real-time web and live transfer prospects.
+                We generate qualified leads and calls of consumers seeking assistance in most financial, automotive, and healthcare verticals.
+                The companies experience spans over a decade in delivering the right customers to the right clients.
               </p>
               <p>
                 When I am not working you’ll find me hanging out with my Wife
                 and two dogs, Bear and Teddy. If the weather is warm you will
                 catch me out for a tour in the twistys on my motorcycle — I
-                recently picked up a 2018 Triumph Street Triple RS 765!
+                recently picked up a 2018 Triumph Street Triple RS 765! Even more recently, my Wife acquired her M2 license and we have been enjoying rides together.
               </p>
               <p>
                 I enjoy tinkering on wood working projects in the garage,
@@ -94,15 +94,21 @@ export default function About() {
                 My Current Stack
               </h3>
               <p>
-                Most of the time nowadays you’ll find me using the TALL stack
-                (Tailwind CSS, Alpine JS, Laravel, and Livewire). It’s fast,
+                For work, I use PHP and Laravel, Vue.js, and Nova 4.
+                For personal projects, you’ll find me using the TALL stack:
+                Tailwind CSS, Alpine JS, Laravel, and Livewire. It’s fast,
                 scalable, and allows for rapid development and prototyping of
-                ideas. If I need to script something, it’s either Powershell or
-                Bash, depending on which OS I am using.
+                ideas; and with Laravel recently announcing first-party support for Livewire, it&apos;s not going away anytime soon!
+                If I need to script something, it’s either Powershell or
+                Bash, depending on which OS I am using. I&apos;m also familiar with Python, I&apos;ve recently been using it to help fine-tune <Link
+                    href="https://openai.com"
+                    className="transition hover:text-teal-500 dark:hover:text-teal-400 border-b border-dotted"
+                > OpenAI
+                </Link> models.
               </p>
               <p>
-                I’ve deployed apps to on-prem servers, Azure app service,
-                Docker, and for rapid development I use services like surge.sh
+                I’ve deployed apps to on-prem servers, Azure app services, AWS EC2 and Lambda functions (Laravel Vapor),
+                Docker, and for rapid development I use services like surge.sh and Vercel
                 to get something up fast and easy.
               </p>
               <p>
