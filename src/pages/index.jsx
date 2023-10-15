@@ -7,7 +7,7 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
-  TwitterIcon,
+  XIcon,
   InstagramIcon,
   GitHubIcon,
   LinkedInIcon,
@@ -237,8 +237,8 @@ export default function Home({ articles }) {
           <div className="mt-6 flex gap-6">
             <SocialLink
               href={`${process.env.NEXT_PUBLIC_TWITTER_URL}`}
-              aria-label="Follow on Twitter"
-              icon={TwitterIcon}
+              aria-label="Follow on X (Twitter)"
+              icon={XIcon}
             />
             <SocialLink
               href={`${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`}
