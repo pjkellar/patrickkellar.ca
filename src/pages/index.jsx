@@ -14,7 +14,8 @@ import {
 } from '@/components/SocialIcons'
 import pvnc from '@/images/photos/pvnc.jpeg'
 import armada from '@/images/photos/armada.jpeg'
-import trentu from '@/images/photos/trentu.jpeg'
+import trentu from '@/images/photos/trent.png'
+import qv from '@/images/photos/qv.jpeg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
@@ -133,14 +134,21 @@ function SocialLink({ icon: Icon, ...props }) {
 function Resume() {
   let resume = [
     {
-      company: 'PVNCCDSB',
-      title: 'Fullstack Developer',
-      logo: pvnc,
-      start: '2014',
+      company: 'Quote Velocity',
+      title: 'Senior Software Engineer',
+      logo: qv,
+      start: '2023',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear(),
       },
+    },
+      {
+      company: 'PVNCCDSB',
+      title: 'Fullstack Developer',
+      logo: pvnc,
+      start: '2014',
+      end: '2023',
     },
     {
       company: 'Armada Toolworks',
@@ -167,8 +175,8 @@ function Resume() {
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
-            <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+            <div className="relative mt-1 flex h-10 w-10 overflow-hidden flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+              <Image src={role.logo} alt={`${role.company} Logo`} className="h-10 w-10" unoptimized />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
