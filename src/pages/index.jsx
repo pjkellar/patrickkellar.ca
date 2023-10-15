@@ -215,7 +215,7 @@ export default function Home({ articles }) {
     <>
       <Head>
         <title>
-          Patrick Kellar | Remote Fullstack Developer
+          Patrick Kellar | Senior Software Engineer
         </title>
         <meta
           name="description"
