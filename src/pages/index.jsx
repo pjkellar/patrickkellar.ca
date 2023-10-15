@@ -134,7 +134,7 @@ function SocialLink({ icon: Icon, ...props }) {
 function Resume() {
   let resume = [
     {
-      company: 'Quote Velocity',
+      company: 'QuoteVelocity',
       title: 'Senior Software Engineer',
       logo: qv,
       start: '2023',
