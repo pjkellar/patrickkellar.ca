@@ -15,7 +15,7 @@ import {
 import pvnc from '@/images/photos/pvnc.jpeg'
 import armada from '@/images/photos/armada.jpeg'
 import trentu from '@/images/photos/trent.png'
-import qv from '@/images/photos/qv.jpeg'
+import qv from '@/images/photos/qv.png'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
